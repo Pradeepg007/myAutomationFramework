@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import dev.failsafe.Timeout;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
