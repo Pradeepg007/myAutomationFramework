@@ -15,17 +15,13 @@ public class GenericUtils {
         this.driver = driver;
     }
 
+    //Generic Steps
     public String getCurrentPageURL() {
         return driver.getCurrentUrl();
     }
 
     public String getCurrentPageTitle() {
         return driver.getTitle();
-    }
-
-    public void waitForElementToBeVisible(int timeOutInSeconds, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public boolean isElementDisplayed(By locator) {
@@ -35,4 +31,21 @@ public class GenericUtils {
     public void clickElement(By locator) {
         driver.findElement(locator).click();
     }
+
+    //Synchronization(Wait)
+    public void waitForElementToBeVisible(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitForElementToBeClickable(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void waitForElementToBeInvisible(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
 }
